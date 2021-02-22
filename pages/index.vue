@@ -54,7 +54,7 @@
 
     <div class="announcement">
       <div class="content">
-        <p class="tag">Announcement</p>
+        <p class="tag">ANNOUNCEMENT</p>
         <h2 class="subtitle">Witnet is now side-chanined to Ethereum</h2>
       </div>
       <button class="button btn">
@@ -62,7 +62,9 @@
       </button>
     </div>
 
-    <div>The decentralized oracle</div>
+    <div>
+
+    </div>
 
     <div>testimonials</div>
     <div>wit token</div>
@@ -244,13 +246,18 @@ export default {}
   background: #f9f9f9;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
+  align-items: center;
+  justify-items: center;
   .content {
+    width: fit-content;
     .tag {
-      font-size: 14px;
+      font-size: 12px;
+      color: #999;
+      font-weight: bold;
     }
     .subtitle {
       font-size: 14px;
+      font-size: 20px;
     }
   }
 

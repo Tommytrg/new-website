@@ -24,7 +24,7 @@
                 </li>
               </ul>
             </nav>
-            <div class="language-selector">Language selector</div>
+            <div class="section language-selector">Language selector</div>
             <p class="github-icon">Github</p>
           </div>
         </div>
@@ -53,17 +53,38 @@
     </div>
 
     <div class="announcement">
-      <div class="content">
-        <p class="tag">ANNOUNCEMENT</p>
-        <h2 class="subtitle">Witnet is now side-chanined to Ethereum</h2>
+      <div class="wrapper">
+        <div class="announcement-content">
+          <p class="tag">ANNOUNCEMENT</p>
+          <h2 class="subtitle">Witnet is now side-chanined to Ethereum</h2>
+        </div>
+        <button class="button black">
+          > Learn how to use Witnet from a solidity contract
+        </button>
       </div>
-      <button class="button btn">
-        > Learn how to use Witnet from a solidity contract
-      </button>
     </div>
 
-    <div>
-
+    <div class="decentralized-oracle">
+      <div class="content">
+        <div class="text">
+          <h2 class="title">
+            The decentralized oracle that is true to the censorship resistant
+            nature of blockchains.
+          </h2>
+          <p class="paragraph">
+            Without a reliable oracle, smart contracts can be vulnerable to
+            hacks, corruption and monetary loss.
+          </p>
+          <p class="paragraph">
+            Witnet leverages state-of-the-art cryptographic and economic
+            techniques to provide your smart contracts with secure datainput.
+          </p>
+        </div>
+        <div class="image">
+          <p class="illustration">(Nice illustration here)</p>
+        </div>
+      </div>
+      <button class="button black">> Build with witnet</button>
     </div>
 
     <div>testimonials</div>
@@ -98,6 +119,11 @@ export default {}
   width: fit-content;
   height: fit-content;
   box-sizing: border-box;
+
+  &.black {
+    color: black;
+    border-color: black;
+  }
 
   &:hover {
     color: #5fbfae;
@@ -202,13 +228,10 @@ export default {}
     .description {
       font-size: 20px;
       font-weight: bold;
-      padding-left: 16px;
       margin-bottom: 48px;
     }
 
     .buttons {
-      text-align: center;
-
       .button {
         margin-right: 16px;
       }
@@ -240,30 +263,73 @@ export default {}
     border-radius: 6px;
   }
 }
-
-.announcement {
-  height: 100px;
-  background: #f9f9f9;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-items: center;
+.decentralized-oracle {
   .content {
-    width: fit-content;
-    .tag {
-      font-size: 12px;
-      color: #999;
-      font-weight: bold;
+    background: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    .text {
+      max-width: 554px;
+
+      .title {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 32px;
+      }
+
+      .paragraph {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
     }
-    .subtitle {
-      font-size: 14px;
-      font-size: 20px;
+    .image {
+      .illustration {
+        border-radius: 50%;
+        background: #fff;
+        width: 300px;
+        height: 300px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 
   .btn {
-    border-color: black;
     color: black;
+    border: black;
+  }
+}
+.announcement {
+  height: 100px;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 1280px;
+    .announcement-content {
+      width: fit-content;
+      .tag {
+        font-size: 12px;
+        color: #999;
+        font-weight: bold;
+      }
+      .subtitle {
+        font-size: 14px;
+        font-size: 20px;
+      }
+    }
+
+    .btn {
+      justify-self: center;
+    }
   }
 }
 </style>

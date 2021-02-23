@@ -17,7 +17,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/content.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -37,11 +37,40 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'nuxt-i18n',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
+  i18n: {
+    // add SEO attributes in layout head for better performance
+    seo: false,
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        isCatchallLocale: true,
+      },
+      {
+        code: 'es',
+        iso: 'es-ES',
+      },
+    ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: require('./locales/en.json'),
+        es: require('./locales/es.json'),
+      },
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      onlyOnRoot: true,
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }

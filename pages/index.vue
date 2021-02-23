@@ -24,7 +24,7 @@
                 </li>
               </ul>
             </nav>
-            <div class="section language-selector">Language selector</div>
+            <div class="language-selector">Language selector</div>
             <p class="github-icon">Github</p>
           </div>
         </div>
@@ -34,15 +34,10 @@
               Unleash de power of smart contracts<span class="dot">.</span>
             </h1>
           </div>
-          <p class="description">
-            Witnet enables your smart contract to react to real world events
-            with strong crypto-economic guarantees.
-          </p>
+          <p class="description">{{ $t('description') }}</p>
           <div class="buttons">
-            <button class="button">> Build with Witnet</button>
-            <button class="button">
-              > Start mining <span class="wit">wit</span>
-            </button>
+            <Button>>Build with Witnet</Button>
+            <Button>> Start mining <span class="wit">wit</span></Button>
           </div>
         </div>
 
@@ -58,9 +53,9 @@
           <p class="tag">ANNOUNCEMENT</p>
           <h2 class="subtitle">Witnet is now side-chanined to Ethereum</h2>
         </div>
-        <button class="button black">
+        <Button color="black">
           > Learn how to use Witnet from a solidity contract
-        </button>
+        </Button>
       </div>
     </div>
 
@@ -85,9 +80,11 @@
             <p class="illustration">(Nice illustration here)</p>
           </div>
         </div>
-        <button class="button black margin-top">> Build with witnet</button>
+        <Button color="black" class="margin-top">> Build with witnet</Button>
       </div>
     </div>
+
+    <nuxt-content :document="page" />
 
     <div>testimonials</div>
     <div>wit token</div>
@@ -99,44 +96,32 @@
 </template>
 
 <script>
-export default {}
+import Button from '@/components/Button'
+
+export default {
+  components: {
+    Button,
+  },
+  async asyncData({ app, params, $content }) {
+    const { slug } = params
+    const page = await $content(
+      app.i18n.locale,
+      'current_announcement',
+      slug
+    ).fetch()
+
+    console.dir(page, { depth: null })
+
+    return {
+      page,
+    }
+  },
+}
 </script>
 
 <style lang="scss">
 // lightgreen = #5fbfae
 // background =#12243a
-
-.button {
-  background: transparent;
-  font-size: 18px;
-  color: white;
-  border-radius: 5px;
-  padding: 16px;
-  border: 2px solid white;
-  outline: 0;
-  text-decoration: none;
-  cursor: pointer;
-  white-space: nowrap;
-  font-weight: bold;
-  width: fit-content;
-  height: fit-content;
-  box-sizing: border-box;
-
-  &.black {
-    color: black;
-    border-color: black;
-  }
-
-  &:hover {
-    color: #5fbfae;
-    border-color: #5fbfae;
-  }
-
-  &:active {
-    color: #468d80;
-    border-color: #468d80;
-  }
-}
 
 .section {
   color: white;
@@ -164,6 +149,7 @@ export default {}
     height: 90px;
     grid-column: span 2;
     display: flex;
+    width: 100%;
 
     .logo {
       width: 150px;
@@ -173,7 +159,6 @@ export default {}
       align-items: center;
       display: flex;
       width: 100%;
-      justify-content: flex-end;
 
       .links {
         & ul {
